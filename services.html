@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QK TRADERS SACCO | Modern Financial Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a00e0;
+            --secondary: #8e2de2;
+            --accent: #00c6ff;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --warning: #fd7e14;
+            --danger: #dc3545;
+            --info: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .header-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Location Section */
+        .location-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .location-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .location-card p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .map-link {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .map-link:hover {
+            color: var(--secondary);
+        }
+        
+        /* Social Media Section */
+        .social-media {
+            text-align: center;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+        
+        .social-icon.whatsapp:hover {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .social-icon.youtube:hover {
+            background-color: #FF0000;
+            color: white;
+        }
+        
+        .social-icon.facebook:hover {
+            background-color: #1877F2;
+            color: white;
+        }
+        
+        .social-icon i {
+            font-size: 1.5rem;
+        }
+        
+        .contact-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-method i {
+            margin-right: 1rem;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        /* Membership Steps */
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        
+        .step-card {
+            flex: 1 1 250px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .step-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Why Choose Us Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        :root {
+    --primary-color: #4a00e0;
+    --secondary-color: #8e2de2;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>Welcome to QK TRADERS SACCO</h1>
+            <p>Your trusted financial partner offering competitive savings and loan solutions to help you achieve your dreams.</p>
+            <div class="cta-buttons">
+                <a href="services.html" class="btn btn-primary">Join Our SACCO</a>
+                <a href="about.html" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">QK SACCO</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Location</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section id="location">
+            <div class="section-title">
+                <h2>Our Location</h2>
+            </div>
+            <div class="location-card">
+                <h3>Ndeeba Branch</h3>
+                <p>Quadral Kay SACCO is conveniently located along the Kampala-Masaka road in Ndeeba, opposite KCB Bank. Our central location makes it easy for members to access our services.</p>
+                <p>For your convenience, we've provided detailed directions to help you find us:</p>
+                <a href="map.html" class="map-link">View on Map &rarr;</a>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <div class="section-title">
+                <h2>Connect With Us</h2>
+            </div>
+            <div class="social-media">
+                <p>Stay updated with our latest news and offers through our social media channels:</p>
+                <div class="social-icons">
+                    <a href="http://wa.me/+256702801507" class="social-icon whatsapp" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.youtube.com" class="social-icon youtube" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.FaceBook.com/quadralkay" class="social-icon facebook" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-method">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+256 702 801507 (Airtel)</span>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <span>quadralpeoplesacco@gmail.com</span>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-clock"></i>
+                        <span>Operating Hours: 7:00 AM - 4:00 PM (Mon-Fri)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="membership">
+            <div class="section-title">
+                <h2>How to Join QK TRADERS SACCO</h2>
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Reach Out</h3>
+                    <p>Visit our offices or contact us via WhatsApp at +256-702801507 for international inquiries.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Membership Package</h3>
+                    <p>Purchase the membership book and pay the account opening fee of only 10,000 UGX (approx. 3 USD).</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Complete Forms</h3>
+                    <p>Fill in the required membership and account opening forms provided by our staff.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Enjoy Benefits</h3>
+                    <p>Start enjoying all the benefits of being a QK SACCO member and improve your financial life.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="benefits">
+            <div class="section-title">
+                <h2>Why Choose QK SACCO</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Competitive Services</h3>
+                    <p>We offer market-leading interest rates on savings and affordable loan terms.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Expert Guidance</h3>
+                    <p>Our financial advisors provide personalized advice to help you achieve your goals.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Secure Transactions</h3>
+                    <p>Your money is safe with our robust security measures and insured deposits.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Flexible Options</h3>
+                    <p>Choose from various savings and loan products tailored to your needs.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Support</h3>
+                    <p>Join a network of like-minded individuals working towards financial success.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+     <!-- Social Media -->
+     <section class="social-section">
+        <h2 class="section-title fade-in">Connect With Us</h2>
+        <div class="social-media">
+            <a href="http://wa.me/+256702801507" class="social-icon" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/UCuh3HxplZlNXIbYhBjaaCZQ" class="social-icon" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.FaceBook.com/quadralkay" class="social-icon" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </a>
+        <a href="https://x.com/@QkTradersNdeeba" class="social-icon" title="X">
+            <i class="fa-solid fa-x"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/@qktraderssacco" class="social-icon" title="X">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About QK SACCO</h3>
+                    <p>QK TRADERS SACCO is a member-owned financial cooperative committed to providing affordable financial services to our community since our establishment.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="map.html">Locations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Opposite KCB Bank, Ndeeba</li>
+                        <li><i class="fas fa-phone"></i> +256 702 801507</li>
+                        <li><i class="fas fa-envelope"></i> quadralpeoplesacco@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 7:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 QK TRADERS SACCO NDEEBA. All Rights Reserved.</p>
+                <p>Developed by TxT Tech Africa</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Add animation to elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.step-card, .benefit-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.step-card, .benefit-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.5s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

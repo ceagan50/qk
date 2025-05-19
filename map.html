@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Location | QK SACCO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a00e0;
+            --secondary: #8e2de2;
+            --accent: #00c6ff;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --warning: #ff6200;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(25, 6, 70, 0.8), rgba(25, 6, 70, 0.8)), url('map-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .location-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e55a00;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .intro h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        /* Map Section */
+        .map-container {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .map-frame {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+        
+        .map-caption {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        /* Branch Info */
+        .branch-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .branch-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .branch-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .branch-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .branch-card p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .contact-method i {
+            margin-right: 1rem;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        /* Directions */
+        .directions {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .directions h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .transport-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .transport-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .transport-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .transport-card h4 i {
+            margin-right: 0.8rem;
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .newsletter-form {
+            margin-top: 1rem;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .newsletter-form button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--warning);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #e55a00;
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .map-frame {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .map-frame {
+                height: 300px;
+            }
+        }
+        :root {
+    --primary-color: #4a00e0;
+    --secondary-color: #8e2de2;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="location-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h1>Find QK SACCO Locations</h1>
+            <p>Visit our conveniently located branches to access our financial services and meet our friendly team.</p>
+            <a href="services.html" class="btn btn-primary">Become a Member Today</a>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">QK SACCO</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Location</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section class="intro">
+            <h2>Our Ndeeba Branch</h2>
+            <p>Our main branch is conveniently located along the Kampala-Masaka road in Ndeeba, opposite KCB Bank. Whether you're coming by car, taxi, or public transport, we're easy to find.</p>
+        </section>
+        
+        <section class="map-container">
+            <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d997.4415240313991!2d32.56487902843904!3d0.2931551410689883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbd0004d474c9%3A0xbf15f3c2ccf9d531!2squadral%20kay!5e0!3m2!1sen!2sug!4v1734266858303!5m2!1sen!2sug" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map-caption">
+                Quadral Kay SACCO - Your Financial Partner in Ndeeba
+            </div>
+        </section>
+        
+        <section class="branch-info">
+            <div class="branch-card">
+                <h3>Branch Information</h3>
+                <p>Our Ndeeba branch offers full financial services including savings accounts, loans, investments, and insurance solutions.</p>
+                
+                <div class="contact-method">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Opposite KCB Bank, Ndeeba, Kampala-Masaka Road</span>
+                </div>
+                
+                <div class="contact-method">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+256 702 801507</span>
+                </div>
+                
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <span>quadralpeoplesacco@gmail.com</span>
+                </div>
+                
+                <div class="contact-method">
+                    <i class="fas fa-clock"></i>
+                    <span>Monday - Friday: 7:00 AM - 4:00 PM</span>
+                </div>
+            </div>
+            
+            <div class="branch-card">
+                <h3>Services Available</h3>
+                <p>At our Ndeeba branch, you can access all our financial services:</p>
+                
+                <ul style="list-style-type: none;">
+                    <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Account opening</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Savings deposits</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Loan applications</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Investment counseling</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Insurance services</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Financial advice</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="directions">
+            <h3>How to Get Here</h3>
+            <p>We're conveniently located opposite KCB Bank in Ndeeba along the Kampala-Masaka road. Here are some transportation options:</p>
+            
+            <div class="transport-options">
+                <div class="transport-card">
+                    <h4><i class="fas fa-car"></i> By Private Vehicle</h4>
+                    <p>Ample parking space available in front of our branch. Look for the QK SACCO signage.</p>
+                </div>
+                
+                <div class="transport-card">
+                    <h4><i class="fas fa-taxi"></i> By Taxi</h4>
+                    <p>Take a taxi to Ndeeba and ask to be dropped at KCB Bank. We're directly opposite.</p>
+                </div>
+                
+                <div class="transport-card">
+                    <h4><i class="fas fa-bus"></i> By Public Transport</h4>
+                    <p>Board any bus or matatu going to Masaka and alight at Ndeeba stage. A 2-minute walk to our location.</p>
+                </div>
+                
+                <div class="transport-card">
+                    <h4><i class="fas fa-motorcycle"></i> By Boda Boda</h4>
+                    <p>Tell the rider "Quadral Kay SACCO opposite KCB Ndeeba." Fare is approximately 5,000 UGX from city center.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+     <!-- Social Media -->
+     <section class="social-section">
+        <h2 class="section-title fade-in">Connect With Us</h2>
+        <div class="social-media">
+            <a href="http://wa.me/+256702801507" class="social-icon" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/UCuh3HxplZlNXIbYhBjaaCZQ" class="social-icon" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.FaceBook.com/quadralkay" class="social-icon" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com/@QkTradersNdeeba" class="social-icon" title="X">
+                <i class="fa-solid fa-x"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@qktraderssacco" class="social-icon" title="X">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Why Choose QK SACCO</h3>
+                    <p>We are a member-owned, community-driven cooperative committed to your financial success through competitive products and expert guidance.</p>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="map.html">Branch Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="map.html">Locations</a></li>
+                        <li><a href="services.html">Join Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Opposite KCB Bank, Ndeeba</li>
+                        <li><i class="fas fa-phone"></i> +256 702 801507</li>
+                        <li><i class="fas fa-envelope"></i> quadralpeoplesacco@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 7:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+<p>Subscribe to receive updates and financial tips.</p>
+<form class="newsletter-form" action="mailto:quadralkpeoplessacco@gmail.com" method="post" enctype="text/plain">
+    <input type="email" name="email" placeholder="Your email address" required>
+    <button type="submit">Subscribe</button>
+</form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 QK TRADERS SACCO NDEEBA. All Rights Reserved.</p>
+                <p>Developed by TxT Tech Africa</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
