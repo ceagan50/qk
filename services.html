@@ -712,6 +712,255 @@
         .chat-send:hover {
             background: #0096cb;
         }
+         /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .map-frame {
+                height: 400px;
+            }
+            
+            .hero-image {
+                max-width: 200px;
+            }
+            
+            .chat-window {
+                width: 90%;
+                right: 5%;
+            }
+            
+            .steps-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .map-frame {
+                height: 300px;
+            }
+            
+            .hero-image {
+                max-width: 150px;
+            }
+            
+            .chat-window {
+                height: 70vh;
+                bottom: 80px;
+            }
+            
+            .chat-header-logo img {
+                height: 25px;
+            }
+            
+            .chat-header h3 {
+                font-size: 1rem;
+            }
+            
+            .chat-message.bot .message-logo {
+                width: 15px;
+                height: 15px;
+            }
+            
+            .chat-button {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .chat-button svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+        @media (max-width: 576px) {
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .main-content {
+        padding: 0 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    /* Products Section */
+    .products {
+        padding: 40px 0;
+    }
+
+    .product-tabs {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .tab-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        width: 100%;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .tab-btn.active {
+        background-color: var(--accent-color);
+        color: white;
+        border-bottom: none;
+    }
+
+    .product-table {
+        margin-top: 20px;
+        font-size: 0.85rem;
+    }
+
+    .product-table th, .product-table td {
+        padding: 10px;
+        display: block;
+        text-align: center;
+        border-bottom: none;
+    }
+
+    .product-table thead {
+        display: none;
+    }
+
+    .product-table tr {
+        display: block;
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+    }
+
+    .product-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--primary-color);
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .product-table td[data-label="Loan Type"],
+    .product-table td[data-label="Savings Type"] {
+        font-size: 1rem;
+        color: var(--text-color);
+        font-weight: 500;
+    }
+
+    /* Chatbot Styles */
+    .chat-window {
+        width: 95%;
+        height: 60vh;
+        bottom: 70px;
+        right: 2.5%;
+        border-radius: 8px;
+    }
+
+    .chat-header {
+        padding: 8px 12px;
+    }
+
+    .chat-header-logo img {
+        height: 20px;
+    }
+
+    .chat-header h3 {
+        font-size: 0.9rem;
+    }
+
+    .chat-close {
+        font-size: 1rem;
+    }
+
+    .chat-body {
+        padding: 10px;
+    }
+
+    .chat-message p {
+        max-width: 85%;
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    .chat-message.bot .message-logo {
+        width: 15px;
+        height: 15px;
+    }
+
+    .chat-footer {
+        padding: 8px;
+    }
+
+    .chat-input {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    .chat-send {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .chat-button {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .chat-button svg {
+        width: 25px;
+        height: 25px;
+    }
+}
     </style>
 </head>
 <body>
