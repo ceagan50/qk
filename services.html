@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4a00e0;
-            --secondary: #8e2de2;
+            --primary: #34078f;
+            --secondary: #58099c;
             --accent: #00c6ff;
             --dark: #1a1a2e;
             --light: #f8f9fa;
@@ -534,6 +534,184 @@
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
+
+  /* Chatbot Styles */
+  .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .chat-button svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+        
+        .chat-window {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 350px;
+            height: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            flex-direction: column;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .chat-header-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .chat-header-logo img {
+            height: 30px;
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .chat-header-logo .logo-fallback {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            display: none;
+        }
+        
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: var(--light);
+        }
+        
+        .chat-message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-message.user {
+            align-items: flex-end;
+        }
+        
+        .chat-message.bot {
+            align-items: flex-start;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .chat-message p {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 5px 0;
+        }
+        
+        .chat-message.user p {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .chat-message.bot p {
+            background: white;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-left: 30px;
+        }
+        
+        .chat-message.bot .message-logo {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            align-self: flex-start;
+        }
+        
+        .chat-message.bot .message-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .chat-message.bot .message-logo .logo-fallback {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: none;
+        }
+        
+        .chat-footer {
+            padding: 10px;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+        }
+        
+        .chat-send {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .chat-send:hover {
+            background: #0096cb;
+        }
     </style>
 </head>
 <body>
@@ -673,6 +851,8 @@
             </div>
         </section>
     </main>
+
+   
      <!-- Social Media -->
      <section class="social-section">
         <h2 class="section-title fade-in">Connect With Us</h2>
@@ -696,6 +876,38 @@
         </a>
         </div>
     </section>
+
+
+    <div class="chat-button" id="chatButton">
+        <svg viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+            <path d="M9 11h2v2H9zm4 0h2v2h-2z" fill="#fff"/>
+        </svg>
+    </div>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-logo">
+                <img src="1.png" alt="QK SACCO Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                <span class="logo-fallback">QK SACCO</span>
+            </div>
+            <h3>Assistant</h3>
+            <button class="chat-close" id="chatClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-message bot">
+                <div class="message-logo">
+                    <img src="1.png" alt="QK SACCO" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                    <span class="logo-fallback">QK</span>
+                </div>
+                <p>Hi there! I'm your QK SACCO Assistant, ready to help with your queries about our Ndeeba branch or services. May I have your name, please?</p>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Type your name or question...">
+            <button class="chat-send" id="chatSend">Send</button>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -790,6 +1002,582 @@
         
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+
+
+
+        // Chatbot Functionality
+        const chatButton = document.getElementById('chatButton');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const chatBody = document.getElementById('chatBody');
+
+        // Toggle chat window
+        chatButton.addEventListener('click', () => {
+            chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.style.display = 'none';
+        });
+
+        // Chatbot Response Logic
+        let userName = null;
+        let userTitle = 'Dear member';
+        let nameRequested = true;
+        let lastTopic = null;
+        const politePhrases = [
+            'Thanks for asking!',
+            'Happy to help!',
+            'Great question!',
+            'I’m glad you asked!',
+            'Good to know!',
+            'I’m here for you!',
+            'Nice to assist you!'
+        ];
+        const followUpQuestions = [
+            'Need directions to our Ndeeba branch?',
+            'Interested in our services at Ndeeba?',
+            'Want to know how to join QK SACCO?',
+            'Curious about our branch hours?',
+            'Need help with something else?'
+        ];
+
+        // Financial data for calculations
+        const loanData = [
+            { type: 'Personal Development Loan', rate: 0.12, maxAmount: 5000000, maxTerm: 24 },
+            { type: 'Business Loan', rate: 0.14, maxAmount: 10000000, maxTerm: 36 },
+            { type: 'Education Loan', rate: 0.10, maxAmount: 3000000, maxTerm: 12 },
+            { type: 'Emergency Loan', rate: 0.15, maxAmount: 2000000, maxTerm: 6 }
+        ];
+
+        const savingsData = [
+            { type: 'Regular Savings', minDeposit: 10000, rate: 0.08, withdrawal: 'Any time' },
+            { type: 'Fixed Savings', minDeposit: 100000, rate: 0.12, withdrawal: 'After 6 months' },
+            { type: 'Target Savings', minDeposit: 50000, rate: 0.10, withdrawal: 'On target date' }
+        ];
+
+        // Financial calculation functions
+        function calculateLoanPayment(principal, annualRate, months) {
+            const monthlyRate = annualRate / 12;
+            const payment = (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+            return Math.round(payment * 100) / 100;
+        }
+
+        function calculateSavingsGrowth(principal, annualRate, years, compoundFrequency = 1) {
+            const ratePerPeriod = annualRate / compoundFrequency;
+            const periods = years * compoundFrequency;
+            const amount = principal * Math.pow(1 + ratePerPeriod, periods);
+            return Math.round(amount * 100) / 100;
+        }
+
+        // Chart generation function
+        function generateChart(data, labels, title, chartType = 'bar') {
+            const chartConfig = {
+                type: chartType,
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: title,
+                        data: data,
+                        backgroundColor: ['#4a00e0', '#8e2de2', '#00c6ff', '#28a745'],
+                        borderColor: ['#3a00b0', '#6e1db2', '#0096cb', '#1f7a34'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: chartType === 'bar' ? {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: title.includes('Interest') ? 'Interest Rate (%)' : 'Amount (UGX)'
+                            }
+                        }
+                    } : {},
+                    plugins: {
+                        legend: {
+                            display: true
+                        },
+                        title: {
+                            display: true,
+                            text: title
+                        }
+                    }
+                }
+            };
+            return chartConfig;
+        }
+
+        // Response definitions
+        const responses = [
+            {
+                keywords: [/loan(s)?/, /borrow/, /credit/, /financing/],
+                response: input => {
+                    if (/compare|comparison|chart/i.test(input)) {
+                        const chartData = loanData.map(loan => loan.rate * 100);
+                        const chartLabels = loanData.map(loan => loan.type);
+                        const chart = generateChart(chartData, chartLabels, 'Loan Interest Rates Comparison', 'bar');
+                        return {
+                            text: `Here’s a comparison of our loan interest rates available at Ndeeba. ${followUpQuestions[1]}`,
+                            chart: chart
+                        };
+                    }
+                    const followUp = followUpQuestions[Math.floor(Math.random() * followUpQuestions.length)];
+                    return `At our Ndeeba branch, we offer Personal Development (12% p.a., up to 5M UGX), Business (14% p.a., up to 10M UGX), Education (10% p.a., up to 3M UGX), and Emergency (15% p.a., up to 2M UGX) loans. ${followUp}`;
+                },
+                score: 0.9,
+                topic: 'loans'
+            },
+            {
+                keywords: [/personal loan(s)?/, /personal development loan/],
+                response: input => {
+                    const match = input.match(/(\d+\.?\d*)\s*(m|million)?/i);
+                    if (match && match[1]) {
+                        const amount = parseFloat(match[1]) * (match[2] ? 1000000 : 1000);
+                        if (amount <= 5000000) {
+                            const monthlyPayment = calculateLoanPayment(amount, 0.12, 24);
+                            return `For a Personal Development Loan of ${amount} UGX at 12% p.a. over 24 months, your monthly repayment would be approximately ${monthlyPayment} UGX. Visit our Ndeeba branch or call +256-702801507 to apply. ${followUpQuestions[1]}`;
+                        }
+                        return `The Personal Development Loan has a maximum of 5,000,000 UGX. Please specify an amount within this limit. ${followUpQuestions[2]}`;
+                    }
+                    return `The Personal Development Loan offers up to 5,000,000 UGX at 12% p.a. over 24 months. Specify an amount (e.g., 2 million) for a repayment estimate or visit Ndeeba. ${followUpQuestions[1]}`;
+                },
+                score: 0.95,
+                topic: 'personal loan'
+            },
+            {
+                keywords: [/business loan(s)?/],
+                response: input => {
+                    const match = input.match(/(\d+\.?\d*)\s*(m|million)?/i);
+                    if (match && match[1]) {
+                        const amount = parseFloat(match[1]) * (match[2] ? 1000000 : 1000);
+                        if (amount <= 10000000) {
+                            const monthlyPayment = calculateLoanPayment(amount, 0.14, 36);
+                            return `For a Business Loan of ${amount} UGX at 14% p.a. over 36 months, your monthly repayment would be approximately ${monthlyPayment} UGX. Visit our Ndeeba branch or call +256-702801507 to apply. ${followUpQuestions[1]}`;
+                        }
+                        return `The Business Loan has a maximum of 10,000,000 UGX. Please specify an amount within this limit. ${followUpQuestions[2]}`;
+                    }
+                    return `The Business Loan offers up to 10,000,000 UGX at 14% p.a. over 36 months. Specify an amount for a repayment estimate or visit Ndeeba. ${followUpQuestions[1]}`;
+                },
+                score: 0.95,
+                topic: 'business loan'
+            },
+            {
+                keywords: [/education loan(s)?/, /school loan/],
+                response: input => {
+                    const match = input.match(/(\d+\.?\d*)\s*(m|million)?/i);
+                    if (match && match[1]) {
+                        const amount = parseFloat(match[1]) * (match[2] ? 1000000 : 1000);
+                        if (amount <= 3000000) {
+                            const monthlyPayment = calculateLoanPayment(amount, 0.10, 12);
+                            return `For an Education Loan of ${amount} UGX at 10% p.a. over 12 months, your monthly repayment would be approximately ${monthlyPayment} UGX. Visit our Ndeeba branch or call +256-702801507 to apply. ${followUpQuestions[1]}`;
+                        }
+                        return `The Education Loan has a maximum of 3,000,000 UGX. Please specify an amount within this limit. ${followUpQuestions[2]}`;
+                    }
+                    return `The Education Loan provides up to 3,000,000 UGX at 10% p.a. over 12 months. Specify an amount for a repayment estimate or visit Ndeeba. ${followUpQuestions[1]}`;
+                },
+                score: 0.95,
+                topic: 'education loan'
+            },
+            {
+                keywords: [/emergency loan(s)?/, /urgent loan/],
+                response: input => {
+                    const match = input.match(/(\d+\.?\d*)\s*(m|million)?/i);
+                    if (match && match[1]) {
+                        const amount = parseFloat(match[1]) * (match[2] ? 1000000 : 1000);
+                        if (amount <= 2000000) {
+                            const monthlyPayment = calculateLoanPayment(amount, 0.15, 6);
+                            return `For an Emergency Loan of ${amount} UGX at 15% p.a. over 6 months, your monthly repayment would be approximately ${monthlyPayment} UGX. Visit our Ndeeba branch or call +256-702801507. ${followUpQuestions[1]}`;
+                        }
+                        return `The Emergency Loan has a maximum of 2,000,000 UGX. Please specify an amount within this limit. ${followUpQuestions[2]}`;
+                    }
+                    return `The Emergency Loan offers up to 2,000,000 UGX at 15% p.a. over 6 months. Specify an amount for a repayment estimate or visit Ndeeba. ${followUpQuestions[1]}`;
+                },
+                score: 0.95,
+                topic: 'emergency loan'
+            },
+            {
+                keywords: [/saving(s)?/, /account/, /deposit/],
+                response: input => {
+                    if (/compare|comparison|chart/i.test(input)) {
+                        const chartData = savingsData.map(saving => saving.rate * 100);
+                        const chartLabels = savingsData.map(saving => saving.type);
+                        const chart = generateChart(chartData, chartLabels, 'Savings Interest Rates Comparison', 'bar');
+                        return {
+                            text: `Here’s a comparison of our savings interest rates at Ndeeba. ${followUpQuestions[1]}`,
+                            chart: chart
+                        };
+                    }
+                    const followUp = followUpQuestions[Math.floor(Math.random() * followUpQuestions.length)];
+                    return `At Ndeeba, we offer Regular Savings (8% p.a., 10,000 UGX min), Fixed Savings (12% p.a., 100,000 UGX min), and Target Savings (10% p.a., 50,000 UGX min). ${followUp}`;
+                },
+                score: 0.9,
+                topic: 'savings'
+            },
+            {
+                keywords: [/regular saving(s)?/],
+                response: input => {
+                    const match = input.match(/(\d+\.?\d*)\s*(k|thousand)?/i);
+                    if (match && match[1]) {
+                        const amount = parseFloat(match[1]) * (match[2] ? 1000 : 1);
+                        if (amount >= 10000) {
+                            const growth = calculateSavingsGrowth(amount, 0.08, 1);
+                            return `With ${amount} UGX in Regular Savings at 8% p.a., you’d have approximately ${growth} UGX after one year. Visit Ndeeba or call +256-702801507 to start. ${followUpQuestions[1]}`;
+                        }
+                        return `Regular Savings requires a minimum deposit of 10,000 UGX. Please specify an amount above this limit. ${followUpQuestions[2]}`;
+                    }
+                    return `Regular Savings requires a 10,000 UGX minimum deposit, earns 8% p.a., and allows withdrawals anytime. Specify an amount for a growth estimate or visit Ndeeba. ${followUpQuestions[1]}`;
+                },
+                score: 0.95,
+                topic: 'regular savings'
+            },
+            {
+                keywords: [/fixed saving(s)?/, /fixed deposit/],
+                response: input => {
+                    const match = input.match(/(\d+\.?\d*)\s*(k|thousand)?/i);
+                    if (match && match[1]) {
+                        const amount = parseFloat(match[1]) * (match[2] ? 1000 : 1);
+                        if (amount >= 100000) {
+                            const growth = calculateSavingsGrowth(amount, 0.12, 1);
+                            return `With ${amount} UGX in Fixed Savings at 12% p.a., you’d have approximately ${growth} UGX after one year (withdrawals after 6 months). Visit Ndeeba or call +256-702801507 to start. ${followUpQuestions[1]}`;
+                        }
+                        return `Fixed Savings requires a minimum deposit of 100,000 UGX. Please specify an amount above this limit. ${followUpQuestions[2]}`;
+                    }
+                    return `Fixed Savings requires a 100,000 UGX minimum deposit, earns 12% p.a., and allows withdrawals after 6 months. Specify an amount for a growth estimate or visit Ndeeba. ${followUpQuestions[1]}`;
+                },
+                score: 0.95,
+                topic: 'fixed savings'
+            },
+            {
+                keywords: [/target saving(s)?/, /goal saving/],
+                response: input => {
+                    const match = input.match(/(\d+\.?\d*)\s*(k|thousand)?/i);
+                    if (match && match[1]) {
+                        const amount = parseFloat(match[1]) * (match[2] ? 1000 : 1);
+                        if (amount >= 50000) {
+                            const growth = calculateSavingsGrowth(amount, 0.10, 1);
+                            return `With ${amount} UGX in Target Savings at 10% p.a., you’d have approximately ${growth} UGX after one year (withdraw on target date). Visit Ndeeba or call +256-702801507 to set up. ${followUpQuestions[1]}`;
+                        }
+                        return `Target Savings requires a minimum deposit of 50,000 UGX. Please specify an amount above this limit. ${followUpQuestions[2]}`;
+                    }
+                    return `Target Savings requires a 50,000 UGX minimum deposit, earns 10% p.a., and allows withdrawals on your target date. Specify an amount for a growth estimate or visit Ndeeba. ${followUpQuestions[1]}`;
+                },
+                score: 0.95,
+                topic: 'target savings'
+            },
+            {
+                keywords: [/membership/, /join/, /become a member/, /sign up/],
+                response: `To join QK SACCO, visit our Ndeeba branch opposite KCB bank, pay a 10,000 UGX fee, and fill out the forms. Call +256-702801507 for details. ${followUpQuestions[2]}`,
+                score: 0.9,
+                topic: 'membership'
+            },
+            {
+                keywords: [/insurance/, /protection/, /coverage/],
+                response: `Our Ndeeba branch offers comprehensive insurance to protect your investments. Contact +256-702801507 for details. ${followUpQuestions[1]}`,
+                score: 0.85,
+                topic: 'insurance'
+            },
+            {
+                keywords: [/contact/, /reach/, /call/, /email/, /whatsapp/],
+                response: `Reach us at +256-702801507, email quadralpeoplesacco@gmail.com, or visit opposite KCB bank in Ndeeba (7:00 AM - 4:00 PM, Mon-Fri). ${followUpQuestions[0]}`,
+                score: 0.8,
+                topic: 'contact'
+            },
+            {
+                keywords: [/location/, /where/, /address/, /office/, /branch/],
+                response: `Our branch is opposite KCB bank in Ndeeba, along Kampala-Masaka road. Contact +256-702801507 for directions. ${followUpQuestions[0]}`,
+                score: 0.8,
+                topic: 'location'
+            },
+            {
+                keywords: [/direction/, /how to get/, /transport/, /route/],
+                response: `To reach our Ndeeba branch: by car, park in front; by taxi, drop at KCB Ndeeba; by bus/matatu, alight at Ndeeba stage; by boda boda, say "Quadral Kay SACCO opposite KCB Ndeeba." ${followUpQuestions[0]}`,
+                score: 0.85,
+                topic: 'directions'
+            },
+            {
+                keywords: [/hours/, /open/, /time/, /schedule/],
+                response: `Our Ndeeba branch is open Monday to Friday, 7:00 AM to 4:00 PM. Contact +256-702801507 for more info. ${followUpQuestions[3]}`,
+                score: 0.85,
+                topic: 'hours'
+            },
+            {
+                keywords: [/interest rate/, /rate/, /cost/],
+                response: input => {
+                    if (/compare|comparison|chart/i.test(input)) {
+                        const chartData = loanData.map(loan => loan.rate * 100).concat(savingsData.map(saving => saving.rate * 100));
+                        const chartLabels = loanData.map(loan => loan.type).concat(savingsData.map(saving => saving.type));
+                        const chart = generateChart(chartData, chartLabels, 'Interest Rates Comparison (Loans & Savings)', 'bar');
+                        return {
+                            text: `Here’s a comparison of interest rates for our loans and savings at Ndeeba. ${followUpQuestions[1]}`,
+                            chart: chart
+                        };
+                    }
+                    return `At Ndeeba: Personal Loan (12% p.a.), Business Loan (14% p.a.), Education Loan (10% p.a.), Emergency Loan (15% p.a.), Regular Savings (8% p.a.), Fixed Savings (12% p.a.), Target Savings (10% p.a.). ${followUpQuestions[1]}`;
+                },
+                score: 0.85,
+                topic: 'interest rates'
+            },
+            {
+                keywords: [/eligibility/, /qualify/, /requirements/],
+                response: `To qualify for QK SACCO services, become a member by paying 10,000 UGX and filling out forms at our Ndeeba branch. Call +256-702801507 for details. ${followUpQuestions[2]}`,
+                score: 0.85,
+                topic: 'eligibility'
+            },
+            {
+                keywords: [/apply/, /application/, /how to get/],
+                response: `Apply for services at our Ndeeba branch or contact +256-702801507. Membership is required (10,000 UGX fee). ${followUpQuestions[2]}`,
+                score: 0.85,
+                topic: 'application'
+            },
+            {
+                keywords: [/thank/, /appreciate/],
+                response: `You’re very welcome! ${followUpQuestions[Math.floor(Math.random() * followUpQuestions.length)]}`,
+                score: 0.5,
+                topic: 'thanks'
+            },
+            {
+                keywords: [/ok/, /okay/, /alright/],
+                response: `Got it! ${followUpQuestions[Math.floor(Math.random() * followUpQuestions.length)]}`,
+                score: 0.5,
+                topic: 'ok'
+            },
+            {
+                keywords: [/greeting/, /hello/, /hi/, /hey/],
+                response: `Hello! Excited to assist you with QK SACCO’s Ndeeba branch and services. ${followUpQuestions[Math.floor(Math.random() * followUpQuestions.length)]}`,
+                score: 0.5,
+                topic: 'greeting'
+            },
+            {
+                keywords: [/bye/, /goodbye/, /see you/, /farewell/],
+                response: input => {
+                    const now = new Date();
+                    const hour = now.getHours();
+                    if (/night/i.test(input) || hour >= 18) {
+                        return userName ? `Good night, ${userTitle} ${userName}! Wishing you a restful evening.` : `Good night! Wishing you a restful evening.`;
+                    }
+                    return userName ? `Goodbye, ${userTitle} ${userName}! Have a fantastic day!` : `Goodbye! Have a fantastic day!`;
+                },
+                score: 0.5,
+                topic: 'bye'
+            },
+            {
+                keywords: [/good night/, /goodnight/],
+                response: userName ? `Good night, ${userTitle} ${userName}! Wishing you a restful evening.` : `Good night! Wishing you a restful evening.`,
+                score: 0.6,
+                topic: 'good night'
+            },
+            {
+                keywords: [/safe journey/, /travel safe/, /safe travels/],
+                response: userName ? `Thank you, ${userTitle} ${userName}! Wishing you a safe and pleasant journey.` : `Thank you! Wishing you a safe and pleasant journey.`,
+                score: 0.6,
+                topic: 'safe journey'
+            },
+            {
+                keywords: [/done/, /no/],
+                response: () => {
+                    const now = new Date();
+                    const hour = now.getHours();
+                    if (hour >= 18) {
+                        return userName ? `Alright, ${userTitle} ${userName}, we're done for now. Wishing you a wonderful evening! Come back anytime.` : `Alright, we're done for now. Wishing you a wonderful evening! Come back anytime.`;
+                    } else if (hour >= 12) {
+                        return userName ? `Okay, ${userTitle} ${userName}, all set for now. Have a great afternoon! Let me know if you need more help later.` : `Okay, all set for now. Have a great afternoon! Let me know if you need more help later.`;
+                    } else {
+                        return userName ? `Got it, ${userTitle} ${userName}, we're done for now. Wishing you a fantastic morning! Feel free to reach out anytime.` : `Got it, we're done for now. Wishing you a fantastic morning! Feel free to reach out anytime.`;
+                    }
+                },
+                score: 0.6,
+                topic: 'done'
+            }
+        ];
+
+        const defaultResponse = {
+            response: () => {
+                const followUp = followUpQuestions[Math.floor(Math.random() * followUpQuestions.length)];
+                return `I’m here to assist with QK SACCO’s Ndeeba branch, directions, or services like loans and savings. ${followUp}`;
+            },
+            score: 0.1,
+            topic: 'default'
+        };
+
+        const namePromptResponse = {
+            response: `I’d love to address you by name. Could you share your name, please? In the meantime, how can I assist you with our Ndeeba branch or services?`,
+            score: 0.2,
+            topic: 'name_prompt'
+        };
+
+        function inferTitle(name) {
+            if (!name) return 'Dear member';
+            const lastChar = name.trim().toLowerCase().slice(-1);
+            if (['a', 'e', 'i', 'o', 'u'].includes(lastChar)) {
+                return 'Ms.';
+            }
+            return 'Mr.';
+        }
+
+        function isNameInput(input) {
+            return /^[a-zA-Z]+$/.test(input) && !responses.some(r => r.keywords.some(k => k.test(input)));
+        }
+
+        function addMessage(message, isUser, chart = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', isUser ? 'user' : 'bot');
+            
+            if (!isUser) {
+                const logoDiv = document.createElement('div');
+                logoDiv.classList.add('message-logo');
+                logoDiv.innerHTML = `
+                    <img src="1.png" alt="QK SACCO" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                    <span class="logo-fallback">QK</span>
+                `;
+                messageDiv.appendChild(logoDiv);
+            }
+            
+            const messageP = document.createElement('p');
+            messageP.textContent = message;
+            messageDiv.appendChild(messageP);
+            chatBody.appendChild(messageDiv);
+
+            if (chart && !isUser) {
+                const chartDiv = document.createElement('div');
+                chartDiv.classList.add('chart-message', 'bot');
+                chartDiv.innerHTML = `
+                    <div class="message-logo">
+                        <img src="1.png" alt="QK SACCO" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <span class="logo-fallback">QK</span>
+                    </div>
+                    <p>Here’s a visual representation:</p>
+                    <pre><code type="chartjs">${JSON.stringify(chart, null, 2)}</code></pre>
+                `;
+                chatBody.appendChild(chartDiv);
+            }
+
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function getBotResponse(userInput) {
+            const input = userInput.toLowerCase().trim();
+            let bestMatch = defaultResponse;
+            let highestScore = 0;
+
+            // Handle name input
+            if (nameRequested && isNameInput(input)) {
+                userName = input.charAt(0).toUpperCase() + input.slice(1);
+                userTitle = inferTitle(userName);
+                nameRequested = false;
+                lastTopic = null;
+                return `Thank you, ${userTitle} ${userName}! ${followUpQuestions[Math.floor(Math.random() * followUpQuestions.length)]}`;
+            }
+
+            // Prompt for name if not provided
+            if (nameRequested && !isNameInput(input)) {
+                nameRequested = false;
+                let response = namePromptResponse.response;
+                responses.forEach(r => {
+                    let matchScore = 0;
+                    r.keywords.forEach(keyword => {
+                        if (keyword.test(input)) {
+                            matchScore += r.score / r.keywords.length;
+                        }
+                    });
+                    if (matchScore > highestScore) {
+                        highestScore = matchScore;
+                        bestMatch = r;
+                    }
+                });
+                if (highestScore >= 0.15) {
+                    const responseData = typeof bestMatch.response === 'function' ? bestMatch.response(input) : bestMatch.response;
+                    if (typeof responseData === 'object' && responseData.text) {
+                        return { text: responseData.text, chart: responseData.chart };
+                    }
+                    response = responseData;
+                    lastTopic = bestMatch.topic;
+                }
+                return response;
+            }
+
+            // Normal response matching
+            responses.forEach(response => {
+                let matchScore = 0;
+                response.keywords.forEach(keyword => {
+                    if (keyword.test(input)) {
+                        matchScore += response.score / response.keywords.length;
+                    }
+                });
+                if (matchScore > highestScore) {
+                    highestScore = matchScore;
+                    bestMatch = response;
+                }
+            });
+
+            // Handle default response
+            if (highestScore < 0.15) {
+                let response = typeof defaultResponse.response === 'function' ? defaultResponse.response() : defaultResponse.response;
+                if (userName) {
+                    response = `${userTitle} ${userName}, ${response}`;
+                }
+                return response;
+            }
+
+            // Process response
+            let finalResponse = typeof bestMatch.response === 'function' ? bestMatch.response(input) : bestMatch.response;
+            const politePrefix = politePhrases[Math.floor(Math.random() * politePhrases.length)];
+
+            if (typeof finalResponse === 'object' && finalResponse.text) {
+                finalResponse.text = userName ? `${userTitle} ${userName}, ${politePrefix} ${finalResponse.text}` : `${politePrefix} ${finalResponse.text}`;
+                if (lastTopic && bestMatch.topic !== lastTopic && !['thanks', 'ok', 'greeting', 'bye', 'good night', 'safe journey', 'done'].includes(bestMatch.topic)) {
+                    const contextPrefixes = [
+                        `Shifting from ${lastTopic}, `,
+                        `Thanks for exploring a new topic! `,
+                        `Moving on to something new, `
+                    ];
+                    const contextPrefix = contextPrefixes[Math.floor(Math.random() * contextPrefixes.length)];
+                    finalResponse.text = contextPrefix + finalResponse.text;
+                }
+                lastTopic = bestMatch.topic;
+                return finalResponse;
+            }
+
+            finalResponse = userName ? `${userTitle} ${userName}, ${politePrefix} ${finalResponse}` : `${politePrefix} ${finalResponse}`;
+            if (lastTopic && bestMatch.topic !== lastTopic && !['thanks', 'ok', 'greeting', 'bye', 'good night', 'safe journey', 'done'].includes(bestMatch.topic)) {
+                const contextPrefixes = [
+                    `Shifting from ${lastTopic}, `,
+                    `Thanks for exploring a new topic! `,
+                    `Moving on to something new, `
+                ];
+                const contextPrefix = contextPrefixes[Math.floor(Math.random() * contextPrefixes.length)];
+                finalResponse = contextPrefix + finalResponse;
+            }
+
+            lastTopic = bestMatch.topic;
+            return finalResponse;
+        }
+
+        chatSend.addEventListener('click', () => {
+            const userInput = chatInput.value.trim();
+            if (userInput) {
+                addMessage(userInput, true);
+                const botResponse = getBotResponse(userInput);
+                setTimeout(() => {
+                    if (typeof botResponse === 'object' && botResponse.text) {
+                        addMessage(botResponse.text, false, botResponse.chart);
+                    } else {
+                        addMessage(botResponse, false);
+                    }
+                }, 500);
+                chatInput.value = '';
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && chatInput.value.trim()) {
+                chatSend.click();
+            }
+        });
+  
+
     </script>
 </body>
 </html>
