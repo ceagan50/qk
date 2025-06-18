@@ -1,14 +1,5 @@
-# robots.txt file for https://qktraderssacco.com/
-# This file instructs web crawlers on how to crawl and index the website
-
-User-agent: *
-# Allow all web crawlers to access the entire site
-Disallow:
-
-# Block access to sensitive or irrelevant directories (if any)
-# Disallow: /admin/
-# Disallow: /login/
-# Disallow: /cgi-bin/
+User-agent: Googlebot
+Allow: /
 
 # Sitemap location to help crawlers find all pages
 Sitemap: https://qktraderssacco.com/sitemap.xml
