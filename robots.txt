@@ -2,4 +2,4 @@ User-agent: Googlebot
 Allow: /
 
 # Sitemap location to help crawlers find all pages
-Sitemap: https://qktraderssacco.com/sitemap.xml
+Sitemap: http://qktraderssacco.com/sitemap.xml
